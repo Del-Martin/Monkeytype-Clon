@@ -1,0 +1,131 @@
+:root {
+    color-scheme: light dark;
+    --green: #00b755;
+    --yellow: #daaf38;
+    --red: #ca4754;
+    --black: #222;
+    --gray: #999;
+}
+
+body {
+    background-color: var(--black);
+    font-family: Menlo, monospace;
+    color: whitesmoke;
+    display: grid;
+    padding: 32px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+section {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 500px;
+}
+
+time{
+    color: var(--yellow);
+}
+
+input{
+    z-index: -999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+}
+
+p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 8px;
+    margin: 0;
+}
+
+h2 {
+    font-weight: 400;
+    opacity: .4;
+    margin: 0;
+    font-size: 16px;;
+}
+
+h3 {
+    font-weight: 400;
+    margin: 0;
+    font-size: 24px;
+    color: var(--yellow);
+}
+
+x-letter {
+    color: var(--gray);
+    position: relative;
+
+    &.active::before{
+        content: '|';
+        color: var(--yellow);
+        font-size: 14px;
+        position: absolute;
+        left: -65%;
+        animation: 1s blink infinite ease-in-out;
+    }
+
+    &.active.is-last::before {
+        left: 65%;
+    }
+
+    &.correct {
+        color: var(--green);
+    }
+
+    &.incorrect {
+        color: var(--red);
+    }
+}
+
+@keyframes blink {
+    0%, 25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+}
+
+x-word {
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.1s ease-in-out;
+    &.marked {
+        border-bottom: 2px solid var(--red)
+    }
+}
+
+#game {
+    display: flex;
+}
+
+#results {
+    display: none;
+}
+
+button {
+    background-color: transparent;
+    border: 0;
+    color: var(--gray);
+    margin-top: 32px;
+    padding: 16px;
+    opacity: .4;
+    display: inline-block;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 16px;
+
+    &:hover {
+        background-color: #444;
+        opacity: 1;
+        scale: 110%;
+
+    }
+}
